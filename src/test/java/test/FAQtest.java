@@ -61,8 +61,7 @@ public class FAQtest {
     }
 
     private WebDriver getDriver() {
-//        String driverType = System.getenv("BROWSER");
-        String driverType="chrome";
+       String driverType = System.getenv("BROWSER");
         switch (driverType.toLowerCase()) {
             case "chrome":
                 ChromeOptions chromeOptions = new ChromeOptions();
