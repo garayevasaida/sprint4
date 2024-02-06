@@ -25,15 +25,10 @@ public class OrderLastPage {
     private By placeOrderButton = By.xpath("//button[@class='Button_Button__ra12g Button_Middle__1CSJM' and text()='Заказать']"); //Локатор кнопки "Заказать"
 
 
-    //Локаторы появляющегося окна "Хотите оформить заказ?"
+    //Локаторы всплывающего окна "Хотите оформить заказ?"
     private By confirmOrderPrompt = By.className("Order_Text__2broi"); //Локатор окна "Хотите оформить заказ?"
     private By yesButton = By.xpath("//button[@class='Button_Button__ra12g Button_Middle__1CSJM' and text()='Да']"); //Локатор кнопки "Да"
-
-    //Локаторы появляющегося окна "Заказ оформлен"
-    private By checkStatusButton = By.xpath("//button[@class='Button_Button__ra12g Button_Middle__1CSJM' and text()='Посмотреть статус']"); //Локатор кнопки "Посмотреть статус"
-
-    private By getRentalPeriod = (By.xpath(".//*[text() = 'сутки']"));  //Выбор срока аренды
-
+        private By getRentalPeriod = (By.xpath(".//*[text() = 'сутки']"));  //Выбор срока аренды
 
     //Методы заполнения данными полей
     public void setDeliveryDate(String deliveryDate) {
@@ -63,22 +58,9 @@ public class OrderLastPage {
     public void clickPlaceOrderButton() {
         driver.findElement(placeOrderButton).click();
     }
-
-
     // Клик на кнопку "Да"
     public void clickYesButton() {
         driver.findElement(yesButton).click();
-    }
-    // Клик на кнопку "Посмотреть статус"
-    public void clickCheckStatusButton() {
-        driver.findElement(checkStatusButton).click();
-    }
-
-    //Проверка, что в окне "Заказ оформлен" появляется кнопка "Посмотреть статус", значит тест работает
-    public void assertCheckStatusButtonVisible() {
-        WebDriverWait wait = new WebDriverWait(driver, 3);
-        WebElement checkStatusButtonElement = wait.until(ExpectedConditions.visibilityOfElementLocated(checkStatusButton));
-        Assert.assertTrue("Кнопка 'Посмотреть статус' не видна", checkStatusButtonElement.isDisplayed());
     }
 
     private By orderDoneText = By.xpath(".//*[text() = 'Заказ оформлен']"); //Локатор заголовка "Заказ оформлен"

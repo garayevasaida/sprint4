@@ -10,6 +10,7 @@ public class MainPage {
     private WebDriver driver;
     // Конструктор
     public MainPage(WebDriver driver) {
+
         this.driver = driver;
     }
     private By mainScooterPage = By.xpath("//*[contains(@href,'https://qa-scooter.praktikum-services.ru/')]"); //Локатор URL Самоката
@@ -108,7 +109,7 @@ public class MainPage {
     private String closedDropdownLocatorFormat = "accordion__heading-%d";
     private String textInputLocatorFormat = "accordion__panel-%d";
 
-    // Метод для клика по закрытому дропдауну с использованием форматирования локатора
+    // Метод для клика по закрытому дропдауну
     public void clickClosedDropdownByIndex(int index) {
         driver.findElement(By.id(String.format(closedDropdownLocatorFormat, index))).click();
     }
@@ -122,8 +123,6 @@ public class MainPage {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
         element.click();
     }
-
-
 }
 
 

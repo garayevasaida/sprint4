@@ -10,6 +10,7 @@ public class OrderFirstPage {
     private WebDriver driver;
     // Конструктор
     public OrderFirstPage(WebDriver driver) {
+
         this.driver = driver;
     }
     //"Для кого самокат"

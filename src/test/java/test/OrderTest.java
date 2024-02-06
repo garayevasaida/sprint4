@@ -60,7 +60,7 @@ public class OrderTest {
     }
     @Test
 
-    public void testFullOrderByFirstButton() {
+    public void testOrderTest() {
         mainPage.clickOrderUpButton(); //Клик на верхнюю кнопку "Заказать" на главной странице
 
         orderFirstPage.fillOrderForm1(firstName, lastName, address, phoneNumber);  //Заполняется форма "Для кого самокат"
@@ -70,14 +70,13 @@ public class OrderTest {
 
         orderLastPage.clickPlaceOrderButton(); // Клик на кнопку "Заказать"
         orderLastPage.clickYesButton(); //Клик на кнопку "Да"
-        //aboutRentPage.clickCheckStatusButton(); // Клик на кнопку "Оформить заказ", но пока её не трогаем.
-        //aboutRentPage.assertCheckStatusButtonVisible(); //Проверка, что кнопка "Оформить заказ" Появилась, значит тест пройден, запасной вариант
         orderLastPage.assertOrderDoneTextVisible(); //Проверка, что заголовок "Заказ оформлен" видим
     }
 
 
     @After
     public void tearDown() {
+
         driver.quit();
     }
 }

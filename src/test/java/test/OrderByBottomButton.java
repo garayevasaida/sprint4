@@ -18,9 +18,9 @@ public class OrderByBottomButton {
     @Before
     public void setUp() {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
-        driver = new ChromeDriver(); // Хром
+        driver = new ChromeDriver(); // Chrome
         //System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriver.exe");
-        //driver = new FirefoxDriver(); // Мозилла
+        //driver = new FirefoxDriver(); // Firefox
         mainPage = new MainPage(driver);
         orderFirstPage = new OrderFirstPage(driver);
         driver.get(SCOOTER_URL);
@@ -28,7 +28,7 @@ public class OrderByBottomButton {
     }
 
     @Test
-    public void testSecondOrderButton() {
+    public void testOrderByBottomButton() {
         mainPage.scrollToOrderDownButtonAndClick(); //Скролл и клик на нижнюю кнопку "Заказать" на главной странице
         orderFirstPage.assertOrderDoneTextVisible(); //Проверяется наличие текста "Для кого самокат"
     }

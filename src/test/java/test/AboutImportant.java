@@ -7,17 +7,18 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import pages.MainPage;
 import static org.junit.Assert.assertEquals;
-//Выпадающий список в разделе «Вопросы о важном». Тебе нужно проверить: когда нажимаешь на стрелочку, открывается соответствующий текст.
+
+//Выпадающий список в разделе «Вопросы о важном»
 @RunWith(Parameterized.class)
 public class AboutImportant {
-
     private int index;
     private String expected;
     private WebDriver driver;
     private MainPage mainPage;
-    public static final String SCOOTER_URL = "https://qa-scooter.praktikum-services.ru/"; //Адрес главной страницы "ЯНдекс Самоката"
+    public static final String SCOOTER_URL = "https://qa-scooter.praktikum-services.ru/"; //Адрес главной страницы "Яндекс Самоката"
 
     //Конструктор класса
     public AboutImportant(String expected, int index) {
@@ -41,19 +42,18 @@ public class AboutImportant {
     @Before
     public void setUp() {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
-        driver = new ChromeDriver(); // Хром
+        driver = new ChromeDriver(); // Chrome
         //System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriver.exe");
-        //driver = new FirefoxDriver(); // Мозилла
+        //driver = new FirefoxDriver(); // Firefox
         mainPage = new MainPage(driver);
         driver.get(SCOOTER_URL);
         driver.manage().window().maximize();  //Расширение экрана
-        //Скролл до начала таблицы, в Фаерфоксе тест проходит только с ним.
         mainPage.scrollToTable();
 
     }
 
     @Test
-    public void testAccordionDropdown() {
+    public void testAboutImportant() {
         mainPage.clickClosedDropdownByIndex(index);  //Клик по кнопке списка
         assertEquals(expected, mainPage.getTextFromTextInputByIndex(index)); //Проверка выпадающего текста
     }
